@@ -93,7 +93,7 @@
   <!-- course section start -->
   <table class="table table-striped">
     <thead>
-      <th>SEMESTER</th>
+      <th>NO.</th>
       <th>COURSE ID</th>
       <th>COURSE NAME</th>
       <th>DETAIL</th>
@@ -126,11 +126,11 @@ firebase.initializeApp(firebaseConfig);
       function(AllRecords){
         AllRecords.forEach(
           function(CurrentRecord){
-            var Semester = CurrentRecord.val().Semester;
+            var CourseNo = CurrentRecord.val().No;
             var CourseID = CurrentRecord.val().CourseID;
             var CourseName = CurrentRecord.val().CourseName;
             var Detail = CurrentRecord.val().Detail;
-            AddItemsToTable(Semester,CourseID,CourseName,Detail);
+            AddItemsToTable(CourseNo,CourseID,CourseName,Detail);
           }
         )
       }
@@ -139,14 +139,14 @@ firebase.initializeApp(firebaseConfig);
     window.onload = SelectAllData;
 
 //FILLING THE TABLE
-function AddItemsToTable(Semester,CourseID,CourseName,Detail){
+function AddItemsToTable(CourseNo,CourseID,CourseName,Detail){
 var tbody = document.getElementById('tbody1');
 var trow = document.createElement('tr');
 var td1 = document.createElement('td');
 var td2 = document.createElement('td');
 var td3 = document.createElement('td');
 var td4 = document.createElement('td');
-td1.innerHTML= Semester;
+td1.innerHTML= No;
 td2.innerHTML= CourseID;
 td3.innerHTML= CourseName;
 td4.innerHTML= Detail;
