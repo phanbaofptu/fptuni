@@ -126,11 +126,11 @@ firebase.initializeApp(firebaseConfig);
       function(AllRecords){
         AllRecords.forEach(
           function(CurrentRecord){
-            var CourseNo = CurrentRecord.val().No;
+            var Semester = CurrentRecord.val().Semester;
             var CourseID = CurrentRecord.val().CourseID;
             var CourseName = CurrentRecord.val().CourseName;
             var Detail = CurrentRecord.val().Detail;
-            AddItemsToTable(CourseNo,CourseID,CourseName,Detail);
+            AddItemsToTable(Semester,CourseID,CourseName,Detail);
           }
         )
       }
@@ -139,14 +139,16 @@ firebase.initializeApp(firebaseConfig);
     window.onload = SelectAllData;
 
 //FILLING THE TABLE
-function AddItemsToTable(CourseNo,CourseID,CourseName,Detail){
+var CourseNo = 0;
+function AddItemsToTable(Semester,CourseID,CourseName,Detail){
 var tbody = document.getElementById('tbody1');
+
 var trow = document.createElement('tr');
 var td1 = document.createElement('td');
 var td2 = document.createElement('td');
 var td3 = document.createElement('td');
 var td4 = document.createElement('td');
-td1.innerHTML= No;
+td1.innerHTML= ++CourseNo;
 td2.innerHTML= CourseID;
 td3.innerHTML= CourseName;
 td4.innerHTML= Detail;
