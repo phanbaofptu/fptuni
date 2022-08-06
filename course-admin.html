@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -24,15 +25,17 @@
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <!-- owl carousel -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <style>
-    .labs{
+    .labs {
       display: inline-block;
       width: 200px;
     }
@@ -49,7 +52,8 @@
           <a class="navbar-brand" href="index.html">
             <img src="images/2021-FPTU-Long.jpg" alt="Logo" width="150" height="60">
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
           </button>
 
@@ -63,7 +67,8 @@
                   <a class="nav-link" href="about.html"> About</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="https://phanbaofptu.github.io/fptuni/course.html">Courses <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="https://phanbaofptu.github.io/fptuni/course.html">Courses <span
+                      class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="https://phanbaofptu.github.io/fptuni/course-admin.html">Course Admin</a>
@@ -98,8 +103,10 @@
   <!-- course section start -->
   <!-- Button trigger modal -->
   <br>
-  <button style="margin-left: 10px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onlick="FillTboxes(null)">Add new Course</button>
+  <button style="margin-left: 10px;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop" onlick="FillTboxes(null)">Add new Course</button>
   <br><br>
+
   <body>
     <table class="table table-striped">
       <thead>
@@ -107,237 +114,288 @@
         <th>SEMESTER</th>
         <th>COURSE ID</th>
         <th>COURSE NAME</th>
-        <th>DETAIL</th>
+        <th>DATE</th>
+        <th>TIME</th>
+        <th>ROOM NO</th>
+        <th>EXAM FORM</th>
+        <th>EXAM</th>
+        <th>DATE OF PUBLICATION</th>
       </thead>
       <tbody id="tbody1">
 
       </tbody>
     </table>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Control Panel</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <label class = "labs">Semester: </label>
-        <input type = "text" id="SemesterMod"> <br>
-        <label class = "labs">Course ID: </label>
-        <input type = "text" id="CourseIDMod"> <br>
-        <label class = "labs">Course Name: </label>
-        <input type = "text" id="CourseNameMod"> <br>
-        <label class = "labs">Detail: </label>
-        <input type = "text" id="DetailMod"> <br>
-      </div>
-      <div class="modal-footer">
-        <button id="AddModBtn" type="button" class="btn btn-primary" onclick="AddStd()">Add new course</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-   
-   <script id="MainScript">
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyAt18gtMamNVP2PXO3LYLfDRfACqarceFA",
-  authDomain: "fptuni-baopg.firebaseapp.com",
-  databaseURL: "https://fptuni-baopg-default-rtdb.firebaseio.com",
-  projectId: "fptuni-baopg",
-  storageBucket: "fptuni-baopg.appspot.com",
-  messagingSenderId: "844102065495",
-  appId: "1:844102065495:web:15aff8b2676b529ab1f212",
-  measurementId: "G-XWHPCW0ED6"
-};
-firebase.initializeApp(firebaseConfig);
-
-var CourseNo;
-// GET ALL DATA
-      function SelectAllData(){
-        document.getElementById("tbody1").innerHTML="";
-        CourseNo=0;
-        firebase.database().ref('Syllabus').once('value',
-        function(AllRecords){
-          AllRecords.forEach(
-            function(CurrentRecord){
-              var Semester = CurrentRecord.val().Semester;
-              var CourseID = CurrentRecord.val().CourseID;
-              var CourseName = CurrentRecord.val().CourseName;
-              var Detail = CurrentRecord.val().Detail;
-              AddItemsToTable(Semester,CourseID,CourseName,Detail);
-            }
-          )
-        }
-        )
-      }
-      window.onload = SelectAllData;
-
-//FILLING THE TABLE
-var CourseNo = 0;
-var stdList =[];
-function AddItemsToTable(Semester,CourseID,CourseName,Detail){
-  var tbody1 = document.getElementById('tbody1');
-  var trow = document.createElement('tr');
-  var td0 = document.createElement('td');
-  var td1 = document.createElement('td');
-  var td2 = document.createElement('td');
-  var td3 = document.createElement('td');
-  var td4 = document.createElement('td');
-  stdList.push([Semester,CourseID,CourseName,Detail]);
-  td0.innerHTML= ++CourseNo;
-  td1.innerHTML= Semester;
-  td2.innerHTML= CourseID;
-  td3.innerHTML= CourseName;
-  td4.innerHTML= Detail;
-  
-  trow.appendChild(td0); 
-  trow.appendChild(td1); 
-  trow.appendChild(td2); 
-  trow.appendChild(td3); 
-  trow.appendChild(td4); 
-  tbody1.appendChild(trow)
-}
-
-var ModSemester = document.getElementById('SemesterMod');
-var ModCourseID = document.getElementById('CourseIDMod');
-var ModCourseName = document.getElementById('CourseNameMod');
-var ModDetail = document.getElementById('DetailMod');
-
-var BTNmodAdd = document.getElementById('AddModBtn');
-
-  function AddStd(){
-    firebase.database().ref("Syllabus/"+ModCourseID.value).set(
-      {
-        Semester: ModSemester.value,
-        CourseID: ModCourseID.value,
-        CourseName: ModCourseName.value,
-        Detail: ModDetail.value
-      },
-      (error) =>{
-        if(error){
-          alert("Đã xảy ra lỗi!");
-        }
-        else{
-          alert("Đã thêm thành công môn học");
-          SelectAllData();
-          $("#exampleModalCenter").modal('hide');
-        }
-      }
-    )
-  }
-    </script>
-    
-  <!-- info section -->
-  <section class="info_section ">
-
-    <div class="container">
-      <div class="info_top ">
-        <div class="row ">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="info_detail">
-              <a href="index.html">
-                <h4>
-                  Natone
-                </h4>
-              </a>
-              <p>
-                Soluta odit exercitationem rerum aperiam eos consectetur impedit delectus qui reiciendis, distinctio, asperiores fuga labore a? Magni natus.
-              </p>
-              <div class="social_box">
-                <a href="">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Control Panel</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
-            <h4>
-              Contact us
-            </h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit
-            </p>
-            <div class="contact_nav">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call : +01 123455678990
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  Email : demo@gmail.com
-                </span>
-              </a>
-            </div>
+          <div class="modal-body">
+            <label class="labs">Semester: </label>
+            <input type="text" id="SemesterMod"> <br>
+            <label class="labs">Course ID: </label>
+            <input type="text" id="CourseIDMod"> <br>
+            <label class="labs">Course Name: </label>
+            <input type="text" id="CourseNameMod"> <br>
+            <label class="labs">Date: </label>
+            <input type="text" id="DateMod"> <br>
+            <label class="labs">Time: </label>
+            <input type="text" id="TimeMod"> <br>
+            <label class="labs">Room No: </label>
+            <input type="text" id="RoomNoMod"> <br>
+            <label class="labs">Exam Form: </label>
+            <input type="text" id="ExamFormMod"> <br>
+            <label class="labs">Exam: </label>
+            <input type="text" id="ExamMod"> <br>
+            <label class="labs">Date Of Publication: </label>
+            <input type="text" id="DateOfPublicationMod"> <br>
           </div>
-          <div class="col-md-4">
-            <div class="info_form">
-              <h4>
-                SIGN UP TO OUR NEWSLETTER
-              </h4>
-              <form action="">
-                <input type="text" placeholder="Enter Your Email" />
-                <button type="submit">
-                  Subscribe
-                </button>
-              </form>
-            </div>
+          <div class="modal-footer">
+            <button id="AddModBtn" type="button" class="btn btn-primary" onclick="AddStd()">Add new Exam
+              schedule</button>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- end info_section -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"></script>
+
+    <script id="MainScript">
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyAt18gtMamNVP2PXO3LYLfDRfACqarceFA",
+        authDomain: "fptuni-baopg.firebaseapp.com",
+        databaseURL: "https://fptuni-baopg-default-rtdb.firebaseio.com",
+        projectId: "fptuni-baopg",
+        storageBucket: "fptuni-baopg.appspot.com",
+        messagingSenderId: "844102065495",
+        appId: "1:844102065495:web:15aff8b2676b529ab1f212",
+        measurementId: "G-XWHPCW0ED6"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      var CourseNo;
+      // GET ALL DATA
+      function SelectAllData() {
+        document.getElementById("tbody1").innerHTML = "";
+        CourseNo = 0;
+        firebase.database().ref('Syllabus').once('value',
+          function (AllRecords) {
+            AllRecords.forEach(
+              function (CurrentRecord) {
+                var Semester = CurrentRecord.val().Semester;
+                var CourseID = CurrentRecord.val().CourseID;
+                var CourseName = CurrentRecord.val().CourseName;
+                var Date = CurrentRecord.val().Date;
+                var Time = CurrentRecord.val().Time;
+                var RoomNo = CurrentRecord.val().RoomNo;
+                var ExamForm = CurrentRecord.val().ExamForm;
+                var Exam = CurrentRecord.val().Exam;
+                var DateOfPublication = CurrentRecord.val().DateOfPublication;
+                AddItemsToTable(Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication);
+              }
+            )
+          }
+        )
+      }
+      window.onload = SelectAllData;
+
+      //FILLING THE TABLE
+      var CourseNo = 0;
+      var stdList = [];
+      function AddItemsToTable(Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication) {
+        var tbody1 = document.getElementById('tbody1');
+        var trow = document.createElement('tr');
+        var td0 = document.createElement('td');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+        var td6 = document.createElement('td');
+        var td7 = document.createElement('td');
+        var td8 = document.createElement('td');
+        var td9 = document.createElement('td');
+        stdList.push([Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication]);
+        td0.innerHTML = ++CourseNo;
+        td1.innerHTML = Semester;
+        td2.innerHTML = CourseID;
+        td3.innerHTML = CourseName;
+        td4.innerHTML = Date;
+        td5.innerHTML = Time;
+        td6.innerHTML = RoomNo;
+        td7.innerHTML = ExamForm;
+        td8.innerHTML = Exam;
+        td9.innerHTML = DateOfPublication;
+
+        trow.appendChild(td0);
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        trow.appendChild(td9);
+        tbody1.appendChild(trow)
+      }
+
+      var ModSemester = document.getElementById('SemesterMod');
+      var ModCourseID = document.getElementById('CourseIDMod');
+      var ModCourseName = document.getElementById('CourseNameMod');
+      var ModDate = document.getElementById('DateMod');
+      var ModTime = document.getElementById('TimeMod');
+      var ModRoomNo = document.getElementById('RoomNoMod');
+      var ModExamForm = document.getElementById('ExamFormMod');
+      var ModExam = document.getElementById('ExamMod');
+      var ModDateOfPublication = document.getElementById('DateOfPublicationMod');
+
+      var BTNmodAdd = document.getElementById('AddModBtn');
+
+      function AddStd() {
+        firebase.database().ref("Syllabus/" + ModCourseID.value).set(
+          {
+            Semester: ModSemester.value,
+            CourseID: ModCourseID.value,
+            CourseName: ModCourseName.value,
+            Date: ModDate.value,
+            Time: ModTime.value,
+            RoomNo: ModRoomNo.value,
+            ExamForm: ModExamForm.value,
+            Exam: ModExam.value,
+            DateOfPublication: ModDateOfPublication.value
+          },
+          (error) => {
+            if (error) {
+              alert("Đã xảy ra lỗi!");
+            }
+            else {
+              alert("Đã thêm thành công môn học");
+              SelectAllData();
+              $("#exampleModalCenter").modal('hide');
+            }
+          }
+        )
+      }
+    </script>
+
+    <!-- info section -->
+    <section class="info_section ">
+
+      <div class="container">
+        <div class="info_top ">
+          <div class="row ">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="info_detail">
+                <a href="index.html">
+                  <h4>
+                    Natone
+                  </h4>
+                </a>
+                <p>
+                  Soluta odit exercitationem rerum aperiam eos consectetur impedit delectus qui reiciendis, distinctio,
+                  asperiores fuga labore a? Magni natus.
+                </p>
+                <div class="social_box">
+                  <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+              <h4>
+                Contact us
+              </h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit
+              </p>
+              <div class="contact_nav">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Location
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call : +01 123455678990
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    Email : demo@gmail.com
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info_form">
+                <h4>
+                  SIGN UP TO OUR NEWSLETTER
+                </h4>
+                <form action="">
+                  <input type="text" placeholder="Enter Your Email" />
+                  <button type="submit">
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end info_section -->
 
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
+    <!-- footer section -->
+    <footer class="footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Free Html Templates</a>
+        </p>
+      </div>
+    </footer>
+    <!-- footer section -->
 
 
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- owl carousel -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
+    <!-- jQery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.js"></script>
+    <!-- owl carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End Google Map -->
 
-</body>
+  </body>
 
 </html>

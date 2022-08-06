@@ -97,18 +97,25 @@
 
   <!-- course section start -->
   <br>
-  <a style="margin-left: 10px;"class="btn btn-primary" href="https://flm.fpt.edu.vn/gui/Home" role="button">View Syllabus</a>
-  <a style="margin-left: 10px;"class="btn btn-primary" href="https://fap.fpt.edu.vn" role="button">Access FAP</a>
-  <a style="margin-left: 10px;"class="btn btn-primary" href="https://fu.edunext.vn/" role="button">FU EduNext</a>
+  <a style="margin-left: 10px;" class="btn btn-primary" href="https://flm.fpt.edu.vn/gui/Home" role="button">View
+    Syllabus</a>
+  <a style="margin-left: 10px;" class="btn btn-primary" href="https://fap.fpt.edu.vn" role="button">Access FAP</a>
+  <a style="margin-left: 10px;" class="btn btn-primary" href="https://fu.edunext.vn/" role="button">FU EduNext</a>
 
   <br><br>
 
   <table class="table table-striped">
     <thead>
-      <th>NO.</th>
+      <th>No</th>
+      <th>SEMESTER</th>
       <th>COURSE ID</th>
       <th>COURSE NAME</th>
-      <th>DETAIL</th>
+      <th>DATE</th>
+      <th>TIME</th>
+      <th>ROOM NO</th>
+      <th>EXAM FORM</th>
+      <th>EXAM</th>
+      <th>DATE OF PUBLICATION</th>
     </thead>
     <tbody id="tbody1">
 
@@ -132,8 +139,11 @@
     };
     firebase.initializeApp(firebaseConfig);
 
+    var CourseNo;
     // GET ALL DATA
     function SelectAllData() {
+      document.getElementById("tbody1").innerHTML = "";
+      CourseNo = 0;
       firebase.database().ref('Syllabus').once('value',
         function (AllRecords) {
           AllRecords.forEach(
@@ -141,8 +151,13 @@
               var Semester = CurrentRecord.val().Semester;
               var CourseID = CurrentRecord.val().CourseID;
               var CourseName = CurrentRecord.val().CourseName;
-              var Detail = CurrentRecord.val().Detail;
-              AddItemsToTable(Semester, CourseID, CourseName, Detail);
+              var Date = CurrentRecord.val().Date;
+              var Time = CurrentRecord.val().Time;
+              var RoomNo = CurrentRecord.val().RoomNo;
+              var ExamForm = CurrentRecord.val().ExamForm;
+              var Exam = CurrentRecord.val().Exam;
+              var DateOfPublication = CurrentRecord.val().DateOfPublication;
+              AddItemsToTable(Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication);
             }
           )
         }
@@ -152,28 +167,54 @@
 
     //FILLING THE TABLE
     var CourseNo = 0;
-    var stdList =[];
-    function AddItemsToTable(Semester, CourseID, CourseName, Detail) {
+    var stdList = [];
+    function AddItemsToTable(Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication) {
       var tbody1 = document.getElementById('tbody1');
-
       var trow = document.createElement('tr');
+      var td0 = document.createElement('td');
       var td1 = document.createElement('td');
       var td2 = document.createElement('td');
       var td3 = document.createElement('td');
       var td4 = document.createElement('td');
-      stdList.push([Semester,CourseID,CourseName,Detail]);
-      td1.innerHTML = ++CourseNo;
+      var td5 = document.createElement('td');
+      var td6 = document.createElement('td');
+      var td7 = document.createElement('td');
+      var td8 = document.createElement('td');
+      var td9 = document.createElement('td');
+      stdList.push([Semester, CourseID, CourseName, Date, Time, RoomNo, ExamForm, Exam, DateOfPublication]);
+      td0.innerHTML = ++CourseNo;
+      td1.innerHTML = Semester;
       td2.innerHTML = CourseID;
       td3.innerHTML = CourseName;
-      td4.innerHTML = Detail;
+      td4.innerHTML = Date;
+      td5.innerHTML = Time;
+      td6.innerHTML = RoomNo;
+      td7.innerHTML = ExamForm;
+      td8.innerHTML = Exam;
+      td9.innerHTML = DateOfPublication;
 
+      trow.appendChild(td0);
       trow.appendChild(td1);
       trow.appendChild(td2);
       trow.appendChild(td3);
       trow.appendChild(td4);
+      trow.appendChild(td5);
+      trow.appendChild(td6);
+      trow.appendChild(td7);
+      trow.appendChild(td8);
+      trow.appendChild(td9);
       tbody1.appendChild(trow)
-      
     }
+
+    var ModSemester = document.getElementById('SemesterMod');
+    var ModCourseID = document.getElementById('CourseIDMod');
+    var ModCourseName = document.getElementById('CourseNameMod');
+    var ModDate = document.getElementById('DateMod');
+    var ModTime = document.getElementById('TimeMod');
+    var ModRoomNo = document.getElementById('RoomNoMod');
+    var ModExamForm = document.getElementById('ExamFormMod');
+    var ModExam = document.getElementById('ExamMod');
+    var ModDateOfPublication = document.getElementById('DateOfPublicationMod');
   </script>
   <!-- course section ends -->
 
