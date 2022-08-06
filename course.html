@@ -102,6 +102,7 @@
       <th>COURSE ID</th>
       <th>COURSE NAME</th>
       <th>DETAIL</th>
+      <th>INFORMATION</th>
     </thead>
     <tbody id="tbody1">
 
@@ -145,14 +146,16 @@
 
     //FILLING THE TABLE
     var CourseNo = 0;
+    var stdList =[];
     function AddItemsToTable(Semester, CourseID, CourseName, Detail) {
-      var tbody = document.getElementById('tbody1');
+      var tbody1 = document.getElementById('tbody1');
 
       var trow = document.createElement('tr');
       var td1 = document.createElement('td');
       var td2 = document.createElement('td');
       var td3 = document.createElement('td');
       var td4 = document.createElement('td');
+      stdList.push([Semester,CourseID,CourseName,Detail]);
       td1.innerHTML = ++CourseNo;
       td2.innerHTML = CourseID;
       td3.innerHTML = CourseName;
@@ -162,7 +165,12 @@
       trow.appendChild(td2);
       trow.appendChild(td3);
       trow.appendChild(td4);
-      tbody.appendChild(trow)
+
+      var ControlDiv = document.createElement("div");
+      ControlDiv.innerHTML = '<a class="btn btn-primary" href="https://flm.fpt.edu.vn/gui/Home" role="button">View Syllabus</a>'
+      trow.appendChild(ControlDiv);
+      tbody1.appendChild(trow)
+      
     }
   </script>
   <!-- course section ends -->

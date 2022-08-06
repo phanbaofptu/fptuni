@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>FPT RESOURCES</title>
+  <title>Course Admin</title>
 
 
   <!-- bootstrap core css -->
@@ -108,7 +108,7 @@
         <th>COURSE ID</th>
         <th>COURSE NAME</th>
         <th>DETAIL</th>
-        <th>CONTROL COURSE</th>
+        <th>INFORMATION</th>
       </thead>
       <tbody id="tbody1">
 
@@ -205,7 +205,7 @@ function AddItemsToTable(Semester,CourseID,CourseName,Detail){
   trow.appendChild(td4); 
 
   var ControlDiv = document.createElement("div");
-  ControlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add new course</button>'
+  ControlDiv.innerHTML = '<a class="btn btn-primary" href="https://flm.fpt.edu.vn/gui/Home" role="button">View Syllabus</a>'
 
   trow.appendChild(ControlDiv);
   tbody1.appendChild(trow)
