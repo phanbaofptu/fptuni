@@ -115,7 +115,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onlick="FillTboxes(null)">Add new Course</button>. -->
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Control Panel</h5>
@@ -132,9 +132,7 @@
         <input type = "text" id="DetailMod"> <br>
       </div>
       <div class="modal-footer">
-        <button id="DelModBtn" type="button" class="btn btn-danger" onclick="DelStd()">Delete</button>
         <button id="AddModBtn" type="button" class="btn btn-primary" onclick="AddStd()">Add new course</button>
-        <button id="UpdModBtn" type="button" class="btn btn-success" onclick="UpdStd()">Update</button>
       </div>
     </div>
   </div>
@@ -205,8 +203,7 @@ function AddItemsToTable(Semester,CourseID,CourseName,Detail){
   trow.appendChild(td4); 
 
   var ControlDiv = document.createElement("div");
-  ControlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onlick="FillTboxes(null)">Add new course</button>'
-  ControlDiv.innerHTML += '<button type="button" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onlick="FillTboxes('+CourseNo+')">Update the course</button>'
+  ControlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add new course</button>'
 
   trow.appendChild(ControlDiv);
   tbody1.appendChild(trow)
@@ -218,31 +215,7 @@ var ModCourseName = document.getElementById('CourseNameMod');
 var ModDetail = document.getElementById('DetailMod');
 
 var BTNmodAdd = document.getElementById('AddModBtn');
-var BTNmodUpd = document.getElementById('UpdModBtn');
-var BTNmodDel = document.getElementById('DelModBtn');
 
-function FillTboxes(index){
-  if(index==null){
-    ModSemester.value = "";
-    ModCourseID.value = "";
-    ModCourseName.value = "";
-    ModDetail.value = "";
-    BTNmodAdd.style.display='inline-block';
-    BTNmodUpd.style.display='none';
-    BTNmodDel.style.display='none';
-  }
-  else{
-    --index;
-    ModSemester.value = stdList[index][0];
-    ModCourseID.value = stdList[index][1];
-    ModCourseName.value = stdList[index][2];
-    ModDetail.value = stdList[index][3];
-    ModCourseID.disabled=true;
-    BTNmodAdd.style.display='none';
-    BTNmodUpd.style.display='inline-block';
-    BTNmodDel.style.display='inline-block';
-  }
-}
   function AddStd(){
     firebase.database().ref("Syllabus/"+ModCourseID.value).set(
       {
@@ -263,36 +236,6 @@ function FillTboxes(index){
       }
     )
   }
-  function UpdStd(){
-    firebase.database().ref("Syllabus/"+ModCourseID).update(
-      {
-        Semester: ModSemester.value,
-        CourseName: ModCourseName.value,
-        Detail: ModDetail.value
-      },
-      (error) =>{
-        if(error){
-          alert("Đã xảy ra lỗi!");
-        }
-        else{
-          alert("Đã cập nhật thành công môn học");
-          SelectAllData();
-          $("#exampleModalCenter").modal('hide');
-        }
-      }
-    )
-  }
-
-  function DelStd(){
-    firebase.database().ref("Syllabus/"+ModCourseID).remove().then(
-      function(){
-        alert("Môn học đã được xoá thành công!");
-        SelectAllData();
-        $("#exampleModalCenter").modal('hide');
-      }
-    )
-  }
-
     </script>
     
   <!-- info section -->
