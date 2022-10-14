@@ -150,13 +150,21 @@
             <input type="text" id="RoomNoMod"> <br>
             <label class="labs">Exam Form: </label>
             <select name="ExamForm" id="ExamFormMod">
+              <option value="None" selected> </option>
               <option value="EOS">EOS</option>
-              <option value="SEB" selected>SEB</option>
-              <option value="LMSDN" selected>LMSDN</option>
-              <option value="None selected> </option>
+              <option value="SEB">SEB</option>
+              <option value="LMSDN">LMSDN</option>
+              
             </select>
+
             <label class="labs">Exam: </label>
-            <input type="text" id="ExamMod"> <br>
+            <select name="Exam" id="ExamMod">
+              <option value="None2" selected></option>
+              <option value="FE">Final Exam</option>
+              <option value="PE">Practical Exam</option>
+              
+            </select>
+
             <label class="labs">Date Of Publication: </label>
             <input type="date" id="DateOfPublicationMod"> <br>
             <input type="checkbox" name="CheckTN" > Tôi đồng ý chịu trách nhiệm khi thêm lịch thi thành công!<br>
